@@ -67,3 +67,25 @@
 .sgl-page-social .sokal-share,
 .sgl-page-social .sokal-sp { justify-content: center; }
 .sokal-sharethis { text-align: center; }
+
+/* "আরও সংবাদ" cards: headline below the photo, not over it. */
+.Name-again .sgl-hadding {
+	position: static;
+	opacity: 1;
+	background: none;
+	width: auto;
+	margin: 0;
+	padding: 10px 2px 4px;
+	transition: none;
+}
+.Name-again .sgl-hadding a {
+	color: #111;
+	font-size: 18px;
+	line-height: 1.5;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	overflow: hidden;
+}
+.Name-again .sgl-hadding a:hover { color: #c4161c; }
+.Name-again .image-again { margin-bottom: 0; }
