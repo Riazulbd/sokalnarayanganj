@@ -29,15 +29,6 @@ $sokal_bn_digits = ( 1 === (int) $sokal_opt( 'site-content', 1 ) );
                     <?php if ( have_posts() ) : ?>
 					<?php while ( have_posts() ) : the_post(); ?>
 
-                    <div class="single-cat-info">
-                        <div class="single-cat-home">
-                            <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><i class="fa fa-home" aria-hidden="true"></i> <?php echo esc_html( $sokal_opt( 'home', 'প্রচ্ছদ' ) ); ?> </a>
-                        </div>
-                        <div class="single-cat-cate">
-                            <i class="fa fa-bars" aria-hidden="true"></i>  <?php the_category( ', ' ); ?>
-                        </div>
-                    </div>
-
                     <div class="single-title">
                         <h3><?php the_title(); ?></h3>
                     </div>
