@@ -1,0 +1,139 @@
+/* Top bar (desktop/tablet): slanted label tab · ticker · slanted "today" tab.
+   Markup: header.php .sokal-topbar. Phones use the phone header instead. */
+.sokal-topbar {
+	--sokal-navy: #1f2a44;
+	display: flex;
+	align-items: stretch;
+	min-height: 46px;
+	margin-left: -15px;
+	margin-right: -15px;
+	background: #f4f4f4;
+	overflow: hidden;
+	font-size: 16px;
+}
+.sokal-topbar__ticker {
+	flex: 1 1 auto;
+	min-width: 0;
+	display: flex;
+}
+.sokal-topbar .top_scrool {
+	display: flex;
+	align-items: stretch;
+	flex: 1 1 auto;
+	min-width: 0;
+	width: auto;
+	float: none;
+	margin: 0;
+	padding: 0;
+	background: none;
+}
+/* label tab: navy with a slanted right edge */
+.sokal-topbar .top_scrool > .scrool_1 {
+	flex: 0 0 auto;
+	width: auto;
+	float: none;
+	display: flex;
+	align-items: center;
+	margin: 0;
+	padding: 0 40px 0 28px !important;
+	background: var(--sokal-navy) !important;
+	color: #fff !important;
+	border: 0 !important;
+	font-size: 18px;
+	font-weight: bold;
+	white-space: nowrap;
+	clip-path: polygon(0 0, 100% 0, calc(100% - 24px) 100%, 0 100%);
+}
+.sokal-topbar .top_scrool > .scrool_2 {
+	flex: 1 1 auto;
+	min-width: 0;
+	width: auto;
+	float: none;
+	display: flex;
+	align-items: center;
+	margin: 0;
+	padding: 0 12px 0 6px !important;
+	background: transparent !important;
+	border: 0 !important;
+	color: #111;
+	font-size: 16px;
+}
+.sokal-topbar .scrool_2 a { color: #111; }
+.sokal-topbar .scrool_2 a:hover { color: #c4161c; }
+.sokal-topbar .sokal-ticker { flex: 1 1 auto; min-width: 0; }
+.sokal-topbar .sokal-ticker__pause {
+	order: 2;
+	margin: 0 0 0 10px;
+	border: 0;
+	color: var(--sokal-navy);
+}
+
+/* today tab: navy with a slanted left edge */
+.sokal-topbar__today {
+	flex: 0 0 auto;
+	display: flex;
+	align-items: center;
+	gap: 9px;
+	padding: 0 22px 0 46px;
+	background: var(--sokal-navy);
+	color: #fff;
+	font-size: 15px;
+	white-space: nowrap;
+	clip-path: polygon(26px 0, 100% 0, 100% 100%, 0 100%);
+}
+.sokal-topbar__cal { flex: 0 0 auto; opacity: .9; }
+
+/* narrower screens: drop the Bengali-calendar part first, then the time */
+@media (max-width: 1199px) {
+	.sokal-topbar .sokal-today__bn,
+	.sokal-topbar .sokal-today__bn + .sokal-today__sep { display: none; }
+}
+@media (max-width: 991px) {
+	.sokal-topbar__today { font-size: 14px; padding-right: 14px; }
+	.sokal-topbar .top_scrool > .scrool_1 { padding: 0 32px 0 16px !important; font-size: 16px; }
+}
+
+/* Every ticker: orange » between headlines (replaces the old square icons) */
+.sokal-ticker__item i { display: none; }
+.sokal-ticker__item::before {
+	content: "»";
+	color: #f58220;
+	font-weight: bold;
+	font-size: 1.15em;
+	margin-right: 8px;
+}
+
+/* Logo row: social icons + light/dark button on the right */
+.sokal-brand-row { position: relative; }
+.sokal-brand-row .sokal-brand-tools {
+	position: absolute;
+	right: 30px;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 2;
+}
+.sokal-brand-row .sokal-brand-tools ul {
+	float: none;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: flex;
+	align-items: center;
+	gap: 14px;
+}
+.sokal-brand-row .sokal-brand-tools ul li { display: block; }
+.sokal-brand-row .sokal-brand-tools ul li:after { display: none; }
+.sokal-brand-row:has(.bannar) .sokal-brand-tools { top: 10px; transform: none; }
+@media (max-width: 767px) {
+	.sokal-brand-row .sokal-brand-tools { display: none; }
+}
+
+/* Dark mode */
+html[data-mode="dark"] .sokal-topbar { background: #1b1b1b; }
+html[data-mode="dark"] .sokal-topbar .scrool_2,
+html[data-mode="dark"] .sokal-topbar .scrool_2 a { color: #e6e6e6; }
+html[data-mode="dark"] .sokal-topbar .sokal-ticker__pause { color: #e6e6e6; }
+
+@media print {
+	.sokal-topbar, .sokal-brand-tools { display: none !important; }
+}

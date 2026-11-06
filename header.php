@@ -89,7 +89,7 @@ $sokal_container = ( isset( $themesbazar['full-body-website'] ) && 2 == $themesb
 
 			<div class="sokal-mhead" style="--sokal-mlogo:<?php echo (int) sokal_int( sokal_opt( 'mobile_logo_height', 56 ), 24, 120 ); ?>px">
 				<div class="sokal-mhead__date">
-					<span class="sokal-clock" data-lang="<?php echo esc_attr( $sokal_hdr_lang ); ?>"><?php echo esc_html( $sokal_hdr_date ); ?></span>
+					<?php echo sokal_today_html( true ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in helper. ?>
 				</div>
 				<div class="sokal-mhead__bar">
 					<button type="button" class="sokal-mhead__btn sokal-mhead__menu" aria-controls="sokal-mdrawer" aria-expanded="false" aria-label="<?php echo esc_attr( 'মেনু' ); ?>">
@@ -144,31 +144,15 @@ $sokal_container = ( isset( $themesbazar['full-body-website'] ) && 2 == $themesb
 				</div>
 			</div>
 
-			<!--========================== top header ==========================-->
+			<!--========================== top bar: ticker + today (desktop/tablet) ==========================-->
 
-			<div class="row top-hdr-border sokal-dhead">
-				<div class="top-hdr-sec">
-					<div class="col-md-4 col-sm-5 date">
-						<span class="sokal-clock" data-lang="<?php echo esc_attr( $sokal_hdr_lang ); ?>"><?php echo esc_html( $sokal_hdr_date ); ?></span>
-					</div>
-					<div class="col-md-3 col-sm-3 search-box">
-						<form class="example" method="get" role="search" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-							<input type="text" maxlength="64" placeholder="<?php echo esc_attr( ! empty( $themesbazar['placeholder'] ) ? $themesbazar['placeholder'] : 'খুঁজুন...' ); ?>" aria-label="<?php echo esc_attr( 'অনুসন্ধান' ); ?>" value="<?php echo esc_attr( get_search_query() ); ?>" name="s" />
-							<button type="submit"><?php echo esc_html( ! empty( $themesbazar['search'] ) ? $themesbazar['search'] : 'খুঁজুন' ); ?></button>
-						</form>
-					</div>
-					<div class="col-md-5 col-sm-4">
-						<div class="top-hdr-social">
-							<ul>
-								<?php foreach ( $sokal_social_links as $sokal_net => $sokal_link ) : ?>
-								<li><a href="<?php echo esc_url( $sokal_link[0] ); ?>" target="_blank" rel="noopener" aria-label="<?php echo esc_attr( $sokal_link[1] ); ?>"> <?php echo $sokal_link[2]; // phpcs:ignore WordPress.Security.EscapeOutput -- static markup defined above. ?></a></li>
-								<?php endforeach; ?>
-								<?php if ( function_exists( 'sokal_mode_toggle' ) ) : ?>
-								<li class="sokal-hdr-mode"><?php sokal_mode_toggle(); ?></li>
-								<?php endif; ?>
-							</ul>
-						</div>
-					</div>
+			<div class="row sokal-dhead sokal-topbar">
+				<div class="sokal-topbar__ticker">
+					<?php sokal_ticker( 'top' ); ?>
+				</div>
+				<div class="sokal-topbar__today">
+					<svg class="sokal-topbar__cal" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M7 14h2M11 14h2M15 14h2M7 17h2M11 17h2" stroke="currentColor" stroke-width="2"/></svg>
+					<?php echo sokal_today_html( true ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in helper. ?>
 				</div>
 			</div>
 
@@ -185,6 +169,16 @@ $sokal_container = ( isset( $themesbazar['full-body-website'] ) && 2 == $themesb
 						<?php endif; ?>
 					</a>
 				</div>
+				<div class="top-hdr-social sokal-brand-tools">
+					<ul>
+						<?php foreach ( $sokal_social_links as $sokal_net => $sokal_link ) : ?>
+						<li><a href="<?php echo esc_url( $sokal_link[0] ); ?>" target="_blank" rel="noopener" aria-label="<?php echo esc_attr( $sokal_link[1] ); ?>"> <?php echo $sokal_link[2]; // phpcs:ignore WordPress.Security.EscapeOutput -- static markup defined above. ?></a></li>
+						<?php endforeach; ?>
+						<?php if ( function_exists( 'sokal_mode_toggle' ) ) : ?>
+						<li class="sokal-hdr-mode"><?php sokal_mode_toggle(); ?></li>
+						<?php endif; ?>
+					</ul>
+				</div>
 				<?php if ( $sokal_ads ) : // banner is an ad: shown only when "Show ads" is on ?>
 				<div class="col-md-8 col-sm-8 bannar">
 					<?php if ( '' !== $sokal_ban_url ) : ?>
@@ -194,12 +188,6 @@ $sokal_container = ( isset( $themesbazar['full-body-website'] ) && 2 == $themesb
 					<?php endif; ?>
 				</div>
 				<?php endif; ?>
-			</div>
-
-			<!--========================== top ticker ==========================-->
-
-			<div class="row sokal-dhead">
-				<?php sokal_ticker( 'top' ); ?>
 			</div>
 
 			<!--========================== menu ==========================-->

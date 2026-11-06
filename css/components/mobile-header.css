@@ -203,3 +203,10 @@
 @media print {
 	.sokal-mhead { display: none !important; }
 }
+
+/* Phone ticker label + date line: same navy as the desktop top bar */
+@media (max-width: 767px) {
+	.sokal-mhead__ticker .scrool_1 { background: #1f2a44 !important; color: #fff !important; }
+	.sokal-mhead__date { font-size: 13px; }
+	.sokal-mhead__date .sokal-today__sep { opacity: .6; }
+}

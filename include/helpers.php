@@ -227,3 +227,57 @@ add_action( 'init', function () {
 		update_option( 'sokal_flush_207', 1, true );
 	}
 } );
+
+/* ------------------------------------------------------------------
+ * Today line: Bengali calendar date | English date | time (Asia/Dhaka).
+ * js/components/today.js keeps it live in the browser (pages are cached).
+ * ------------------------------------------------------------------ */
+
+/**
+ * Bengali (Bangladesh revised) calendar date for a Gregorian Y-m-d.
+ * Year starts 14 April (১ বৈশাখ); বৈশাখ–আশ্বিন 31 days, কার্তিক–মাঘ 30,
+ * ফাল্গুন 29 (30 when the following February is in a leap year), চৈত্র 30.
+ *
+ * @return array( day, month name, year ) — numbers in ASCII.
+ */
+function sokal_bangla_date( $y, $m, $d ) {
+	$months = array( 'বৈশাখ', 'জ্যৈষ্ঠ', 'আষাঢ়', 'শ্রাবণ', 'ভাদ্র', 'আশ্বিন', 'কার্তিক', 'অগ্রহায়ণ', 'পৌষ', 'মাঘ', 'ফাল্গুন', 'চৈত্র' );
+	$start_year = ( $m > 4 || ( 4 === $m && $d >= 14 ) ) ? $y : $y - 1;
+	$offset     = (int) floor( ( gmmktime( 0, 0, 0, $m, $d, $y ) - gmmktime( 0, 0, 0, 4, 14, $start_year ) ) / DAY_IN_SECONDS );
+	$feb_year   = $start_year + 1;
+	$leap       = ( 0 === $feb_year % 4 && 0 !== $feb_year % 100 ) || 0 === $feb_year % 400;
+	$lengths    = array( 31, 31, 31, 31, 31, 31, 30, 30, 30, 30, $leap ? 30 : 29, 30 );
+	$i          = 0;
+	while ( $i < 11 && $offset >= $lengths[ $i ] ) {
+		$offset -= $lengths[ $i ];
+		$i++;
+	}
+	return array( $offset + 1, $months[ $i ], $start_year - 593 );
+}
+
+/** Markup for the today line (server fallback text; today.js updates it). */
+function sokal_today_html( $with_time = true ) {
+	$tz   = new DateTimeZone( 'Asia/Dhaka' );
+	$now  = new DateTime( 'now', $tz );
+	$y    = (int) $now->format( 'Y' );
+	$m    = (int) $now->format( 'n' );
+	$d    = (int) $now->format( 'j' );
+	$days = array( 'রবিবার', 'সোমবার', 'মঙ্গলবার', 'বুধবার', 'বৃহস্পতিবার', 'শুক্রবার', 'শনিবার' );
+	$gm   = array( 'জানুয়ারি', 'ফেব্রুয়ারি', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগস্ট', 'সেপ্টেম্বর', 'অক্টোবর', 'নভেম্বর', 'ডিসেম্বর' );
+	$b    = sokal_bangla_date( $y, $m, $d );
+	$bn   = 'আজ ' . $days[ (int) $now->format( 'w' ) ] . ', ' . bn_number( $b[0] ) . ' ' . $b[1] . ', ' . bn_number( $b[2] );
+	$en   = bn_number( $d ) . ' ' . $gm[ $m - 1 ] . ', ' . bn_number( $y );
+	$h    = (int) $now->format( 'G' );
+	$time = bn_number( ( $h % 12 ) ? $h % 12 : 12 ) . ':' . bn_number( $now->format( 'i' ) ) . ' ' . ( $h < 12 ? 'পূর্বাহ্ন' : 'অপরাহ্ন' );
+
+	$out  = '<span class="sokal-today" data-sokal-today>';
+	$out .= '<span class="sokal-today__bn">' . esc_html( $bn ) . '</span>';
+	$out .= '<span class="sokal-today__sep"> | </span>';
+	$out .= '<span class="sokal-today__en">' . esc_html( $en ) . '</span>';
+	if ( $with_time ) {
+		$out .= '<span class="sokal-today__sep"> | </span>';
+		$out .= '<span class="sokal-today__time">' . esc_html( $time ) . '</span>';
+	}
+	$out .= '</span>';
+	return $out;
+}
