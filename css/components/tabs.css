@@ -1,0 +1,42 @@
+/* "সর্বশেষ আপডেট / জনপ্রিয় সংবাদ" sidebar tabs: always side by side
+   (Bootstrap stacks justified tabs on phones, which reads like two headings). */
+.tab-header .nav-tabs.nav-justified {
+	display: flex;
+	width: 100%;
+	margin: 0;
+	border-bottom: 0;
+}
+.tab-header .nav-tabs.nav-justified > li {
+	flex: 1 1 0;
+	float: none;
+	display: block;
+	width: auto;
+	margin: 0;
+}
+.tab-header .nav-tabs.nav-justified > li > a {
+	margin: 0;
+	padding: 10px 6px;
+	border: 0;
+	border-top: 3px solid transparent;
+	border-radius: 0;
+	background: #e6e6e6;
+	color: #555;
+	text-align: center;
+	font-size: 16px;
+	line-height: 1.4;
+}
+.tab-header .nav-tabs.nav-justified > li.active > a,
+.tab-header .nav-tabs.nav-justified > li.active > a:hover,
+.tab-header .nav-tabs.nav-justified > li.active > a:focus {
+	background: #fff;
+	color: #111;
+	border: 0;
+	border-top: 3px solid #f58220;
+	font-weight: bold;
+}
+.tab-header .nav-tabs.nav-justified > li > a:hover { background: #f2f2f2; color: #111; }
+
+html[data-mode="dark"] .tab-header .nav-tabs.nav-justified > li > a { background: #262626; color: #aaa; }
+html[data-mode="dark"] .tab-header .nav-tabs.nav-justified > li.active > a,
+html[data-mode="dark"] .tab-header .nav-tabs.nav-justified > li.active > a:hover,
+html[data-mode="dark"] .tab-header .nav-tabs.nav-justified > li.active > a:focus { background: #1e1e1e; color: #fff; }
