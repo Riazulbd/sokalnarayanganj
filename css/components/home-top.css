@@ -1,0 +1,56 @@
+/* Home top section (page/section-one.php): lead story · two stories · tabs,
+   all three columns the same height. The lead story sets the height; the two
+   middle stories share it (photos fill), the tab box matches and scrolls inside. */
+@media (min-width: 768px) {
+	.leadnews_sec > .row:first-child { display: flex; }
+	.leadnews_sec > .row:first-child > [class*="col-"] { float: none; }
+
+	/* middle column: two equal cards, photo fills the space above the headline */
+	.leadnews_sec > .row:first-child > .col-md-3 {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+	}
+	.leadnews_sec > .row:first-child > .col-md-3 > .themesbazar_leadnews {
+		flex: 1 1 0;
+		min-height: 0;
+		display: flex;
+		flex-direction: column;
+	}
+	.leadnews_sec > .row:first-child > .col-md-3 > .themesbazar_leadnews > a:first-child {
+		flex: 1 1 0;
+		min-height: 70px;
+		display: block;
+		overflow: hidden;
+	}
+	.leadnews_sec > .row:first-child > .col-md-3 > .themesbazar_leadnews > a:first-child img {
+		width: 100%;
+		height: 100%;
+		aspect-ratio: auto;
+		object-fit: cover;
+		margin: 0;
+	}
+	.leadnews_sec > .row:first-child > .col-md-3 .themesbazar_hadding_2 {
+		margin: 8px 0 0;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 3;
+		overflow: hidden;
+	}
+
+	/* right column: tab box exactly as tall as the row, list scrolls inside */
+	.leadnews_sec > .row:first-child > .col-md-4 { position: relative; }
+	.leadnews_sec > .row:first-child > .col-md-4 > .tab-header {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 15px;
+		right: 15px;
+		display: flex;
+		flex-direction: column;
+		margin: 0;
+	}
+	.leadnews_sec .tab-header .tab-content { flex: 1 1 auto; min-height: 0; }
+	.leadnews_sec .tab-header .tab-pane.active { height: 100%; }
+	.leadnews_sec .tab-header .news-title { max-height: none; height: 100%; overflow-y: auto; }
+}
