@@ -89,3 +89,62 @@
 }
 .Name-again .sgl-hadding a:hover { color: #c4161c; }
 .Name-again .image-again { margin-bottom: 0; }
+
+/* ---------- Share rows: everything on one line, small gap under the photo ---------- */
+.single-img { margin-bottom: 0; }
+.sgl-page-social {
+	flex-wrap: nowrap;
+	gap: 8px;
+	padding: 10px 0 8px;
+	overflow-x: auto;
+	scrollbar-width: none;
+}
+.sgl-page-social::-webkit-scrollbar { display: none; }
+.sgl-page-social .sokal-share,
+.sgl-page-social .sokal-sp {
+	flex: 0 0 auto;
+	flex-wrap: nowrap;
+	gap: 8px;
+	margin: 0;
+}
+.sokal-share-under-image { padding-top: 12px; margin-bottom: 4px; }
+.sokal-share__status:empty, .sokal-sp__status:empty { display: none; }
+
+/* Network buttons: square icon buttons (label kept for screen readers) */
+.sgl-page-social .sokal-share__btn {
+	width: 42px;
+	height: 42px;
+	padding: 0;
+	justify-content: center;
+}
+.sgl-page-social .sokal-share__label,
+.sgl-page-social .sokal-sp__btn span {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	white-space: nowrap;
+	border: 0;
+}
+.sgl-page-social .sokal-sp__btn { height: 42px; }
+
+/* Computers: photo buttons keep their text */
+@media (min-width: 768px) {
+	.sgl-page-social .sokal-sp__btn span {
+		position: static;
+		width: auto;
+		height: auto;
+		margin: 0;
+		overflow: visible;
+		clip: auto;
+	}
+}
+/* Phones: photo buttons are square icons too; no print button */
+@media (max-width: 767px) {
+	.sgl-page-social .sokal-sp__btn { width: 42px; padding: 0; justify-content: center; }
+	.sgl-page-social .print { display: none; }
+	.sgl-page-social { justify-content: center; }
+}
