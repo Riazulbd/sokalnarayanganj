@@ -1,0 +1,69 @@
+/* Article page (single.php, related.php). Owner: article agent. */
+
+/* Reserve space for the ad above the title so a late ad doesn't shift the title and hero. */
+.sokal-ad-single-top {
+	margin-bottom: 10px;
+}
+
+/* Hero: hold the 16:9 box before the image loads. */
+.single-img img {
+	display: block;
+	width: 100%;
+	height: auto;
+	aspect-ratio: 16 / 9;
+	object-fit: cover;
+}
+
+/* Share row: network buttons, picture buttons and print sit side by side. */
+.sgl-page-social {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 10px;
+	padding: 20px 0 15px;
+}
+.sgl-page-social .print {
+	border: 1px solid transparent;
+	font: inherit;
+	font-size: 16px;
+	line-height: 1.4;
+	cursor: pointer;
+}
+.sgl-page-social .print:focus-visible {
+	outline: 2px solid #A897F3;
+	outline-offset: 2px;
+}
+
+/* Related cards: same box for real thumbnails and the placeholder. */
+.image-again img {
+	display: block;
+	width: 100%;
+	height: auto;
+	aspect-ratio: 16 / 9;
+	object-fit: cover;
+}
+
+@media print {
+	.sokal-ad-single-top,
+	.singlepage-section .add,
+	.sgl-page-social-title,
+	.sgl-page-social,
+	.singlepage-section .col-md-4 {
+		display: none !important;
+	}
+	.singlepage-section .col-md-8 {
+		width: 100%;
+	}
+}
+
+/* ShareThis inline buttons above the photo and below the article text */
+.sokal-sharethis { margin: 10px 0; }
+.sokal-sharethis--top { margin-top: 0; }
+
+/* Share area centred: title and every button row in the middle. */
+.sgl-page-social-title,
+.sgl-page-social-title h4 { text-align: center; }
+.sgl-page-social { justify-content: center; }
+.sgl-page-social .sokal-share,
+.sgl-page-social .sokal-sp { justify-content: center; }
+.sokal-sharethis { text-align: center; }

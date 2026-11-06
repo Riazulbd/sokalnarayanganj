@@ -1,0 +1,99 @@
+/* ==========================================================================
+   content.css (seo agent)
+   1. Article content: stop wide media/tables/URLs in old posts breaking layout
+   2. Story card photos fill a 16:9 box
+   ========================================================================== */
+
+/* Last-resort guard: nothing may push the page wider than the screen.
+   clip (not hidden) so position:sticky keeps working. */
+html,
+body {
+	overflow-x: clip;
+}
+
+/* ---- 1. Article content ------------------------------------------------ */
+
+.single-dtls {
+	min-width: 0;
+	max-width: 100%;
+	overflow-wrap: anywhere;
+	word-wrap: break-word;
+}
+
+.single-dtls * {
+	max-width: 100%;
+	box-sizing: border-box;
+}
+
+.single-dtls img,
+.single-dtls figure,
+.single-dtls picture,
+.single-dtls video,
+.single-dtls embed,
+.single-dtls object,
+.single-dtls .wp-block-embed,
+.single-dtls .wp-block-embed__wrapper,
+.single-dtls .wp-embedded-content,
+.single-dtls .wp-caption,
+.single-dtls .wp-block-image {
+	max-width: 100% !important;
+	height: auto;
+}
+
+/* Images keep their natural aspect ratio even when width/height attrs exist. */
+.single-dtls img {
+	height: auto !important;
+	object-fit: contain;
+}
+
+.single-dtls figure {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+/* Iframes without a height attribute: responsive 16:9. */
+.single-dtls iframe:not([height]) {
+	width: 100%;
+	max-width: 100%;
+	height: auto;
+	aspect-ratio: 16 / 9;
+}
+
+/* Iframes that carry an explicit height: keep it, only cap the width. */
+.single-dtls iframe[height] {
+	max-width: 100%;
+}
+
+.single-dtls table {
+	display: block;
+	max-width: 100%;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+.single-dtls pre {
+	max-width: 100%;
+	overflow-x: auto;
+	white-space: pre;
+	overflow-wrap: normal;
+}
+
+.single-dtls a,
+.single-dtls code {
+	overflow-wrap: anywhere;
+	word-break: break-word;
+}
+
+/* ---- 2. Story card photos fill their 16:9 box --------------------------- */
+
+.themesbazar_leadnews img,
+.images_title img,
+.image-again img,
+.small_images img {
+	aspect-ratio: 16 / 9;
+	object-fit: cover;
+	height: auto;
+}
+
+/* Widths are left to style.css (100% lead/image-again, 35% images_title,
+   32% small_images); only the ratio and cropping are enforced here. */

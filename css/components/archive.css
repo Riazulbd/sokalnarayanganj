@@ -1,0 +1,10 @@
+/* Archive, search, date, page and Family templates. */
+
+/* Story photos fill their column and keep their aspect ratio (width/height attrs reserve space). */
+.archive_page img,
+.archive-img img,
+.single_images img,
+.profile_news img {
+	max-width: 100%;
+	height: auto;
+}

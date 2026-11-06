@@ -1,0 +1,309 @@
+/* Light / dark mode (include/mode.php). Owner: mode agent.
+   <html data-mode="light|dark"> is set by an inline head script before paint.
+   Header/footer colours saved in Theme Settings are printed inline in <head>
+   with higher specificity and override the dark defaults below. */
+
+:root { color-scheme: light; }
+html[data-mode="dark"] { color-scheme: dark; }
+
+/* ---------- Toggle button (.sokal-mode-toggle) ---------- */
+.sokal-mode-toggle {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	padding: 0;
+	margin: 0;
+	border: 1px solid currentColor;
+	border-radius: 50%;
+	background: transparent;
+	color: inherit;
+	line-height: 1;
+	cursor: pointer;
+	vertical-align: middle;
+	transition: background-color .2s ease;
+}
+.sokal-mode-toggle:hover { background-color: rgba(127, 127, 127, .15); }
+.sokal-mode-toggle:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+.sokal-mode-toggle__icon { display: block; width: 18px; height: 18px; pointer-events: none; }
+/* Light: show the moon (switch to dark). Dark: show the sun. */
+.sokal-mode-toggle__sun { display: none; }
+html[data-mode="dark"] .sokal-mode-toggle__sun { display: block; }
+html[data-mode="dark"] .sokal-mode-toggle__moon { display: none; }
+/* In the mobile navbar header the bar is dark/brand coloured. */
+.navbar-header .sokal-mode-toggle { color: #fff; margin: 8px 6px 8px 0; }
+
+/* ======================================================================
+   Dark theme
+   Palette: page #121212, surface #1e1e1e, raised #262626, border #333,
+   text #e4e4e4, muted #a9a9a9, link #8ab4f8.
+   ====================================================================== */
+
+html[data-mode="dark"],
+html[data-mode="dark"] body,
+html[data-mode="dark"] .body-section,
+html[data-mode="dark"] .main_wbsite {
+	background-color: #121212;
+	color: #e4e4e4;
+}
+
+html[data-mode="dark"] h1,
+html[data-mode="dark"] h2,
+html[data-mode="dark"] h3,
+html[data-mode="dark"] h4,
+html[data-mode="dark"] h5,
+html[data-mode="dark"] h6,
+html[data-mode="dark"] p,
+html[data-mode="dark"] li,
+html[data-mode="dark"] label,
+html[data-mode="dark"] blockquote,
+html[data-mode="dark"] figcaption {
+	color: inherit;
+}
+
+/* Links in running text only: titles/menus keep their theme colours. */
+html[data-mode="dark"] .single-dtls a,
+html[data-mode="dark"] .single-dtlss a,
+html[data-mode="dark"] .content_dtails a,
+html[data-mode="dark"] .entry-comments a,
+html[data-mode="dark"] .comment-respond a,
+html[data-mode="dark"] .widget_area li a,
+html[data-mode="dark"] .textwidget a { color: #8ab4f8; }
+html[data-mode="dark"] .single-dtls a:hover,
+html[data-mode="dark"] .single-dtlss a:hover,
+html[data-mode="dark"] .content_dtails a:hover { color: #aecbfa; }
+
+/* ---------- Header ---------- */
+html[data-mode="dark"] .top-hdr-border {
+	background: #1a1a1a;
+	color: #e4e4e4;
+}
+/* Logo/banner row (no class): own rule so browsers without :has() skip only this. */
+html[data-mode="dark"] .main_wbsite > .row:has(> .logo) {
+	background: #1a1a1a;
+	color: #e4e4e4;
+}
+html[data-mode="dark"] .sokal-brand-row { background: #1a1a1a; color: #e4e4e4; }
+html[data-mode="dark"] .top-hdr-border .date,
+html[data-mode="dark"] .top-hdr-social ul li,
+html[data-mode="dark"] .sokal-clock,
+html[data-mode="dark"] .sokal-site-name,
+html[data-mode="dark"] .sokal-mode-toggle {
+	color: #e4e4e4;
+}
+html[data-mode="dark"] .top-hdr-border { border-color: #333; }
+html[data-mode="dark"] .sokal-social--x { color: #f1f1f1; }
+html[data-mode="dark"] .sokal-social--facebook { color: #4a90f5; }
+html[data-mode="dark"] form.example input[type=text] {
+	background: #262626;
+	color: #e4e4e4;
+	border-color: #3a3a3a;
+}
+html[data-mode="dark"] form.example input[type=text]::placeholder { color: #a9a9a9; }
+
+/* ---------- Ticker ---------- */
+html[data-mode="dark"] .scrool_2 {
+	background-color: #1e1e1e;
+	color: #e4e4e4;
+}
+html[data-mode="dark"] .scrool_2 a,
+html[data-mode="dark"] .sokal-ticker,
+html[data-mode="dark"] .sokal-ticker__item,
+html[data-mode="dark"] .sokal-ticker__item a,
+html[data-mode="dark"] .sokal-ticker__pause {
+	color: #e4e4e4;
+}
+
+/* ---------- Menu dropdowns (bar keeps its brand colour) ---------- */
+html[data-mode="dark"] .dropdown-menu {
+	background-color: #1e1e1e;
+	border-color: #333;
+}
+html[data-mode="dark"] .dropdown-menu > li > a { color: #e4e4e4; }
+html[data-mode="dark"] .mainmenu .collapse ul ul > li:hover > a,
+html[data-mode="dark"] .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+html[data-mode="dark"] .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+	background: #333;
+	color: #fff !important; /* menu.css uses !important on #000 */
+}
+html[data-mode="dark"] .mainmenu .collapse ul ul ul > li:hover > a { color: #fff !important; }
+html[data-mode="dark"] .dropdown-menu .divider { background-color: #333; }
+
+/* ---------- Cards, story headlines, panels ---------- */
+html[data-mode="dark"] .themesbazar_hadding_1 a,
+html[data-mode="dark"] .themesbazar_hadding_2 a,
+html[data-mode="dark"] .themesbazar_hadding_3 a,
+html[data-mode="dark"] .archive_title01 a,
+html[data-mode="dark"] .archive_title02 a,
+html[data-mode="dark"] .archive-title a,
+html[data-mode="dark"] .family a,
+html[data-mode="dark"] .more-catagory ul li,
+html[data-mode="dark"] .more-catagory ul li a {
+	color: #ececec;
+}
+html[data-mode="dark"] .themesbazar_hadding_1 a:hover,
+html[data-mode="dark"] .themesbazar_hadding_2 a:hover,
+html[data-mode="dark"] .themesbazar_hadding_3 a:hover,
+html[data-mode="dark"] .archive_title01 a:hover,
+html[data-mode="dark"] .archive_title02 a:hover,
+html[data-mode="dark"] .archive-title a:hover {
+	color: #ff8a80;
+}
+/* .sgl-hadding sits on an image overlay: keep white text. */
+html[data-mode="dark"] .sgl-hadding a { color: #fff; }
+
+html[data-mode="dark"] .content_dtails,
+html[data-mode="dark"] .single-dtls,
+html[data-mode="dark"] .single-dtlss,
+html[data-mode="dark"] .family_deg {
+	color: #d6d6d6;
+}
+html[data-mode="dark"] .themesbazar_more_news a { color: #ff8a80; }
+
+html[data-mode="dark"] .images_title,
+html[data-mode="dark"] .border,
+html[data-mode="dark"] .themesbazar_leadnews img {
+	border-color: #333;
+}
+
+html[data-mode="dark"] .cat_title_four,
+html[data-mode="dark"] .archive-page-post,
+html[data-mode="dark"] .archive_back,
+html[data-mode="dark"] .category_info,
+html[data-mode="dark"] .family_border,
+html[data-mode="dark"] .sgl-page-views-count,
+html[data-mode="dark"] .single-cat-info,
+html[data-mode="dark"] .entry-comments,
+html[data-mode="dark"] li.comment,
+html[data-mode="dark"] .comment-list li li li,
+html[data-mode="dark"] .form-allowed-tags,
+html[data-mode="dark"] .panel,
+html[data-mode="dark"] .panel-body,
+html[data-mode="dark"] .well,
+html[data-mode="dark"] .thumbnail,
+html[data-mode="dark"] .list-group-item,
+html[data-mode="dark"] .pager li > a,
+html[data-mode="dark"] .pager li > span,
+html[data-mode="dark"] .pagination > li > a,
+html[data-mode="dark"] .pagination > li > span,
+html[data-mode="dark"] .modal-content {
+	background-color: #1e1e1e;
+	color: #e4e4e4;
+	border-color: #333;
+}
+html[data-mode="dark"] .comment-list li li { background-color: #262626; }
+html[data-mode="dark"] .panel-heading,
+html[data-mode="dark"] .panel-footer {
+	background-color: #262626;
+	color: #e4e4e4;
+	border-color: #333;
+}
+html[data-mode="dark"] .pager li > a:hover,
+html[data-mode="dark"] .pagination > li > a:hover { background-color: #2c2c2c; }
+html[data-mode="dark"] .pagination > .active > a,
+html[data-mode="dark"] .pagination > .active > span { color: #fff; }
+html[data-mode="dark"] .sgl-page-views-count ul li,
+html[data-mode="dark"] .comment-header,
+html[data-mode="dark"] .comment-header .comment-meta a { color: #a9a9a9; }
+html[data-mode="dark"] .single-title,
+html[data-mode="dark"] .single-title h1,
+html[data-mode="dark"] .single-title h3 { color: #f1f1f1; }
+html[data-mode="dark"] .caption { background-color: #000; color: #e4e4e4; }
+html[data-mode="dark"] hr { border-color: #333; }
+
+/* ---------- Sidebar tabs ---------- */
+html[data-mode="dark"] .tab-header { background: #1e1e1e; }
+html[data-mode="dark"] .tab-header .nav-tabs { background: #262626; color: #e4e4e4; }
+html[data-mode="dark"] .tab-header .nav-tabs > li > a { color: #e4e4e4; }
+html[data-mode="dark"] .tab-header .nav-tabs > li > a:hover { background: #333; }
+html[data-mode="dark"] .tab-header .nav-tabs > li.active > a,
+html[data-mode="dark"] .tab-header .nav-tabs > li.active > a:focus,
+html[data-mode="dark"] .tab-header .nav-tabs > li.active > a:hover {
+	background: #1e1e1e;
+	color: #fff;
+	border-top-color: #555;
+}
+html[data-mode="dark"] .tab-header .tab-content ul.media-list .media { border-bottom-color: #3a3a3a; }
+html[data-mode="dark"] .nav-tabs { border-bottom-color: #333; }
+html[data-mode="dark"] .nav-tabs > li > a:hover { border-color: #333; background-color: #262626; }
+html[data-mode="dark"] .nav-tabs > li.active > a,
+html[data-mode="dark"] .nav-tabs > li.active > a:hover,
+html[data-mode="dark"] .nav-tabs > li.active > a:focus {
+	background-color: #1e1e1e;
+	color: #fff;
+	border-color: #333 #333 transparent;
+}
+
+/* ---------- Forms ---------- */
+html[data-mode="dark"] input[type="text"],
+html[data-mode="dark"] input[type="search"],
+html[data-mode="dark"] input[type="email"],
+html[data-mode="dark"] input[type="url"],
+html[data-mode="dark"] input[type="date"],
+html[data-mode="dark"] input[type="number"],
+html[data-mode="dark"] input[type="password"],
+html[data-mode="dark"] textarea,
+html[data-mode="dark"] select,
+html[data-mode="dark"] .form-control,
+html[data-mode="dark"] .comment-respond input,
+html[data-mode="dark"] .comment-respond input[type="url"] {
+	background-color: #262626;
+	color: #e4e4e4;
+	border-color: #3a3a3a;
+}
+html[data-mode="dark"] input::placeholder,
+html[data-mode="dark"] textarea::placeholder { color: #a9a9a9; }
+
+/* ---------- Tables and code in post content ---------- */
+html[data-mode="dark"] .single-dtls table,
+html[data-mode="dark"] .single-dtlss table,
+html[data-mode="dark"] .table {
+	background-color: #1a1a1a;
+	color: #e4e4e4;
+}
+html[data-mode="dark"] .single-dtls th,
+html[data-mode="dark"] .single-dtls td,
+html[data-mode="dark"] .single-dtlss th,
+html[data-mode="dark"] .single-dtlss td,
+html[data-mode="dark"] .table > thead > tr > th,
+html[data-mode="dark"] .table > tbody > tr > td,
+html[data-mode="dark"] .table > tbody > tr > th {
+	border-color: #3a3a3a;
+	background-color: transparent;
+	color: inherit;
+}
+html[data-mode="dark"] .single-dtls thead th,
+html[data-mode="dark"] .single-dtlss thead th { background-color: #262626; }
+html[data-mode="dark"] .single-dtls tr:nth-child(even) td,
+html[data-mode="dark"] .table-striped > tbody > tr:nth-of-type(odd) { background-color: #202020; }
+html[data-mode="dark"] .single-dtls blockquote { border-left-color: #444; color: #cfcfcf; }
+html[data-mode="dark"] .single-dtls pre,
+html[data-mode="dark"] .single-dtls code {
+	background-color: #1e1e1e;
+	color: #e4e4e4;
+	border-color: #333;
+}
+
+/* ---------- Share area (brand buttons keep their colours) ---------- */
+html[data-mode="dark"] .sgl-page-social-title h4 { color: #f1f1f1; border-bottom-color: #333; }
+html[data-mode="dark"] .sokal-share__btn--copy {
+	background-color: #262626;
+	color: #e4e4e4;
+	border-color: #3a3a3a;
+}
+html[data-mode="dark"] .sokal-share__status { color: #a9a9a9; }
+
+/* ---------- Footer ---------- */
+html[data-mode="dark"] .themesbazar_footer_sec { background: #181818; color: #d6d6d6; }
+html[data-mode="dark"] .themesbazar_footer_sec .editor-text,
+html[data-mode="dark"] .themesbazar_footer_sec .address-text,
+html[data-mode="dark"] .themesbazar_footer_sec a { color: #d6d6d6; }
+html[data-mode="dark"] .root { background: #0d0d0d; color: #bdbdbd; }
+html[data-mode="dark"] .root .root_01,
+html[data-mode="dark"] .root .root_02,
+html[data-mode="dark"] .root a { color: #bdbdbd; }
+
+/* Images, logos, ads and brand-coloured buttons stay unchanged. */
+
+html[data-mode="dark"] .entry-comments a.comment-reply-link { color: #fff; }

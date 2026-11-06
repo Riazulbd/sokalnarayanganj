@@ -1,0 +1,60 @@
+/* Print: a clean article — logo, headline, date, photo, text, publisher line.
+   Loaded on every page (inline bundle) but only applies when printing. */
+@media print {
+	@page { margin: 14mm 12mm; }
+
+	html, body,
+	html[data-mode="dark"], html[data-mode="dark"] body {
+		background: #fff !important;
+		color: #000 !important;
+	}
+	html[data-mode="dark"] * {
+		background-color: transparent !important;
+		color: #000 !important;
+		border-color: #ccc !important;
+	}
+
+	/* Bootstrap prints every link address in brackets — switch that off. */
+	a[href]:after,
+	abbr[title]:after,
+	a[href^="#"]:after,
+	a[href^="javascript:"]:after { content: none !important; }
+	a, a:visited { color: #000 !important; text-decoration: none !important; }
+
+	/* Everything that isn't the article */
+	.top-hdr-border,
+	.sokal-brand-row .bannar,
+	.top_scrool, .scrool,
+	.menu_area,
+	.single-cat-info,
+	.sokal-sharethis,
+	.sgl-page-social, .sgl-page-social-title,
+	.sokal-share, .sokal-sp,
+	.add, .widget, .sokal-ad-single-top,
+	.singlepage-section .col-md-4,
+	.sgl-cat-tittle, .Name-again, .row:has(> .col-sm-4 > .Name-again),
+	#comments, .comments-area, .comment-respond,
+	.scrollToTop, .sokal-mode-toggle,
+	.sokal-f-cats, .sokal-f-rule, .sokal-f-follow, .sokal-f-credit,
+	.fb-root, #fb-root { display: none !important; }
+
+	/* Logo at the top, modest size */
+	.sokal-brand-row { margin: 0 0 6mm !important; }
+	.sokal-brand-row .logo { width: 100% !important; float: none !important; text-align: center; padding: 0 !important; }
+	.sokal-brand-row .logo img { max-height: 22mm; width: auto !important; }
+
+	/* Article full width */
+	.singlepage-section .col-md-8,
+	.main_wbsite, .container, .container-fluid { width: 100% !important; float: none !important; padding: 0 !important; margin: 0 !important; }
+	.single-title h3 { font-size: 20pt; line-height: 1.35; page-break-after: avoid; }
+	.sgl-page-views-count { background: none !important; padding: 0 !important; margin: 0 0 4mm !important; font-size: 10pt; }
+	.single-img img { max-width: 100% !important; height: auto !important; page-break-inside: avoid; }
+	.single-dtls { font-size: 12.5pt; line-height: 1.7; }
+	.single-dtls img, .single-dtls figure { max-width: 100% !important; page-break-inside: avoid; }
+	.single-dtls p { orphans: 3; widows: 3; }
+
+	/* Footer: just the publisher block and copyright */
+	.themesbazar_footer_sec { background: none !important; border-top: 1px solid #999 !important; margin-top: 8mm !important; padding: 4mm 0 0 !important; font-size: 10pt; page-break-inside: avoid; }
+	.sokal-footer2 .sokal-footer-logo { display: none !important; }
+	.sokal-f-info p { margin: 0 0 1mm !important; }
+}

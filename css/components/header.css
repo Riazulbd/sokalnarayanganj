@@ -1,0 +1,168 @@
+/* Header (header.php). Owner: header agent. */
+
+/* Standards mode (DOCTYPE added): keep the old quirks-mode look.
+   Images no longer sit on the text baseline with a gap underneath. */
+.logo a,
+.bannar a {
+	display: block;
+}
+.logo img,
+.bannar img {
+	display: block;
+	width: 100%;
+	height: auto;
+	max-width: 100%;
+}
+.sokal-site-name {
+	display: block;
+	padding: 10px;
+	font-size: 32px;
+	line-height: 1.2;
+}
+
+/* Live clock */
+.sokal-clock {
+	display: inline-block;
+	font-variant-numeric: tabular-nums;
+}
+
+/* Social icons: original look (fa icons, 21px, "।" separators from style.css).
+   X uses an inline SVG sized like the font icons. */
+.top-hdr-social .sokal-hdr-svg svg {
+	width: .9em;
+	height: .9em;
+	vertical-align: -0.1em;
+	fill: currentColor;
+}
+
+/* Light/dark switch: last item of the social row (desktop/tablet) */
+.top-hdr-social li.sokal-hdr-mode {
+	vertical-align: middle;
+}
+
+/* Light/dark switch next to the mobile menu button */
+.navbar-header .sokal-nav-mode {
+	display: none;
+}
+
+@media (max-width: 767px) {
+	.sokal-hdr-mode {
+		display: none;
+	}
+	.navbar-header .sokal-nav-mode {
+		display: block;
+		float: right;
+		margin: 8px 10px 8px 0;
+	}
+}
+
+/* ---------- Phones: compact header ---------- */
+@media (max-width: 767px) {
+	/* Top bar: date, search, icons stacked tightly */
+	.top-hdr-sec .date {
+		font-size: 14px;
+		padding: 6px 0 4px !important;
+		text-align: center;
+	}
+	.top-hdr-sec .search-box {
+		margin: 2px 0 4px;
+	}
+	.top-hdr-sec form.example input[type=text],
+	.top-hdr-sec form.example button {
+		height: 38px;
+		padding: 6px 10px;
+		font-size: 15px;
+	}
+	.top-hdr-social ul {
+		float: none !important;
+		text-align: center;
+		padding: 2px 0 6px;
+	}
+	.top-hdr-social ul li a { font-size: 18px; }
+	.top-hdr-social ul li:after { padding-left: 12px; padding-right: 12px; }
+
+	/* Logo row: less empty space */
+	.sokal-brand-row .logo { padding-top: 6px; padding-bottom: 6px; }
+	.sokal-brand-row .bannar { padding-bottom: 6px; }
+
+	/* Menu bar: slim bar, every item lined up (incl. the active one) */
+	.menu_area .navbar-header { min-height: 46px; }
+	.menu_area .navbar-toggle { margin: 6px 10px 6px 0; }
+	.navbar-header .sokal-nav-mode { margin: 6px 8px 6px 0; }
+	.menu_area .navbar-collapse { padding-left: 0; padding-right: 0; }
+	.menu_area .navbar-nav { margin: 0; }
+	.menu_area .mainmenu .navbar-nav > li > a,
+	.menu_area .mainmenu .navbar-nav > li.active > a {
+		display: block;
+		padding: 9px 16px;
+		line-height: 1.5;
+	}
+	.menu_area .mainmenu .navbar-nav > li + li { border-top: 1px solid rgba(255, 255, 255, .12); }
+
+	/* Ticker label */
+	.top_scrool > .scrool_1,
+	.scrool > .scrool_1 { padding: 4px 10px; font-size: 16px; }
+}
+
+/* Phones: one light/dark button only (the one beside the menu button). */
+@media (max-width: 767px) {
+	.top-hdr-social ul li.sokal-hdr-mode { display: none; }
+	.top-hdr-social ul li:nth-last-child(2):after { display: none; } /* no separator after the last icon */
+}
+
+
+/* Centred header logo (no banner): height from Theme Settings → General → Desktop logo height */
+.sokal-brand-row .sokal-logo-center {
+	text-align: center;
+	padding-top: 14px;
+	padding-bottom: 14px;
+}
+.sokal-brand-row .sokal-logo-center a { display: inline-block !important; width: auto !important; }
+.sokal-brand-row .sokal-logo-center img {
+	display: inline-block !important;
+	width: auto !important;
+	max-width: 100%;
+	height: var(--sokal-dlogo, 110px) !important;
+	object-fit: contain;
+}
+
+
+/* Official Facebook / YouTube logos in the top bar */
+.top-hdr-social .sokal-hdr-logo { display: inline-block; line-height: 0; vertical-align: middle; }
+.top-hdr-social .sokal-hdr-logo svg { display: block; }
+.top-hdr-social ul li { vertical-align: middle; }
+
+/* Desktop & tablet: date centred in the top bar, no search box, icons on the right;
+   menu items centred in the red bar. */
+@media (min-width: 768px) {
+	.top-hdr-sec {
+		display: grid;
+		grid-template-columns: 1fr auto 1fr;
+		align-items: center;
+	}
+	.top-hdr-sec > .date {
+		grid-column: 2;
+		width: auto;
+		float: none;
+		text-align: center;
+		padding-top: 6px !important;
+		padding-bottom: 6px !important;
+	}
+	.top-hdr-sec > .search-box { display: none !important; }
+	.top-hdr-sec > .col-md-5 {
+		grid-column: 3;
+		justify-self: end;
+		width: auto;
+		float: none;
+	}
+	.top-hdr-social ul { padding-top: 0; }
+
+	.menu_area .navbar-collapse { text-align: center; }
+	.menu_area .navbar-nav {
+		float: none;
+		display: inline-block;
+		vertical-align: top;
+		margin: 0;
+	}
+	.menu_area .dropdown-menu { text-align: left; }
+}

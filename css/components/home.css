@@ -1,0 +1,46 @@
+/* Home page (index.php, page/*.php). Owner: home agent. */
+
+/* Ad slots: only printed when the widget area has widgets (no reserved empty space). */
+
+/* Narrow-column category blocks far below the fold: skip rendering until near the viewport. */
+.sokal-cv {
+	/* normal rendering: no placeholder height, so no blank gaps */
+}
+
+/* Facebook page box: the reserved min-height is set inline from the Facebook height setting. */
+.fb-root .fb-page {
+	display: block;
+	max-width: 100%;
+	overflow: hidden;
+}
+.fb-root .fb-page blockquote {
+	margin: 0;
+	padding: 10px 0;
+	border: 0;
+	font-size: 15px;
+}
+
+/* Date archive: native date input styled like the old text input. */
+.archive_calender_sec form.example input[type="date"] {
+	padding: 5px;
+	font-size: 15px;
+	font-family: inherit;
+	line-height: 1.42857143;
+	height: 33px;
+	border: 1px solid #ddd;
+	border-radius: 0;
+	float: left;
+	width: 70%;
+	background: #fff;
+	color: inherit;
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+	.archive_calender_sec form.example input[type="date"] {
+		padding: 4px !important;
+		font-size: 12px !important;
+		height: 27px;
+	}
+}

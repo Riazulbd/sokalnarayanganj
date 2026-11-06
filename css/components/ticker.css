@@ -1,0 +1,115 @@
+/* Header tickers (include/ticker.php). Owner: header agent. */
+
+.sokal-ticker {
+	position: relative;
+	display: flex;
+	align-items: center;
+	overflow: hidden;
+	min-height: 1.6em;
+}
+
+.sokal-ticker__pause {
+	display: none; /* shown once js/components/ticker.js is running */
+	flex: 0 0 auto;
+	margin: 0 8px 0 0;
+	padding: 0 6px;
+	border: 1px solid currentColor;
+	border-radius: 3px;
+	background: transparent;
+	color: inherit;
+	font-size: 14px;
+	line-height: 1.5;
+	cursor: pointer;
+}
+.sokal-ticker.is-ready .sokal-ticker__pause {
+	display: inline-block;
+}
+.sokal-ticker__pause:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 2px;
+}
+
+.sokal-ticker__viewport {
+	flex: 1 1 auto;
+	min-width: 0;
+	overflow: hidden;
+}
+
+.sokal-ticker__track {
+	display: flex;
+	flex-wrap: nowrap;
+	width: max-content;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	white-space: nowrap;
+	animation: sokal-ticker-scroll var(--speed, 40s) linear infinite;
+	will-change: transform;
+}
+
+.sokal-ticker__item {
+	flex: 0 0 auto;
+	padding-right: 2em;
+}
+.sokal-ticker__item i {
+	margin-right: 4px;
+}
+
+.sokal-ticker__viewport:hover .sokal-ticker__track,
+.sokal-ticker__viewport:focus-within .sokal-ticker__track,
+.sokal-ticker.is-paused .sokal-ticker__track {
+	animation-play-state: paused;
+}
+
+@keyframes sokal-ticker-scroll {
+	from { transform: translateX(0); }
+	to   { transform: translateX(-50%); }
+}
+
+/* Reduced motion: stand still, let the list be scrolled by hand. */
+@media (prefers-reduced-motion: reduce) {
+	.sokal-ticker__track {
+		animation: none;
+		transform: none;
+	}
+	.sokal-ticker__viewport {
+		overflow-x: auto;
+	}
+	.sokal-ticker__item[aria-hidden="true"] {
+		display: none;
+	}
+	.sokal-ticker.is-ready .sokal-ticker__pause {
+		display: none;
+	}
+}
+
+/* Compact label: "সর্বশেষ" takes only the space it needs, headlines get the rest. */
+.top_scrool,
+.scrool {
+	display: flex;
+	align-items: stretch;
+}
+.top_scrool > .scrool_1,
+.scrool > .scrool_1 {
+	flex: 0 0 auto;
+	width: auto;
+	float: none;
+	padding: 4px 16px;
+	white-space: nowrap;
+	display: flex;
+	align-items: center;
+}
+.top_scrool > .scrool_2,
+.scrool > .scrool_2 {
+	flex: 1 1 auto;
+	width: auto;
+	float: none;
+	min-width: 0;
+	display: flex;
+	align-items: center;
+}
+.top_scrool > .scrool_2 .sokal-ticker,
+.scrool > .scrool_2 .sokal-ticker {
+	flex: 1 1 auto;
+	min-width: 0;
+}

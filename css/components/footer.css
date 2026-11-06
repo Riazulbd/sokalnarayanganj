@@ -1,0 +1,259 @@
+/* Footer (owner: footer agent). Colours of the wrappers come from mode.css / dynamic-css.php. */
+
+/* ---- New footer layout (only when the new settings are used) ---- */
+.themesbazar_footer_sec .sokal-footer-info {
+	text-align: left;
+}
+/* Original footer text keeps its own alignment; only the links block is right-aligned. */
+.themesbazar_footer_sec .sokal-footer-links {
+	text-align: right;
+	margin-top: 10px;
+}
+.sokal-footer-logo {
+	margin-bottom: 12px;
+}
+.sokal-footer-logo img {
+	display: inline-block;
+	max-width: 220px;
+	max-height: 80px;
+	width: auto;
+	height: auto;
+}
+.sokal-footer-name {
+	margin: 0 0 6px;
+	font-size: 20px;
+	font-weight: 700;
+	line-height: 1.4;
+}
+.sokal-footer-desc {
+	margin: 0 0 10px;
+	font-size: 15px;
+	line-height: 1.6;
+	opacity: .9;
+}
+.sokal-footer-contact {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	font-size: 15px;
+	line-height: 1.7;
+}
+.sokal-footer-contact strong {
+	font-weight: 700;
+}
+.themesbazar_footer_sec .sokal-footer-contact a {
+	color: inherit;
+	text-decoration: underline;
+	text-underline-offset: 2px;
+}
+.themesbazar_footer_sec .sokal-footer-contact a:hover,
+.themesbazar_footer_sec .sokal-footer-contact a:focus {
+	text-decoration: none;
+}
+.sokal-footer-heading {
+	margin: 0 0 10px;
+	font-size: 17px;
+	font-weight: 700;
+}
+
+/* ---- Social links ---- */
+.sokal-social-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	gap: 8px;
+	margin: 0 0 14px;
+	padding: 0;
+	list-style: none;
+}
+.sokal-social {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	color: #fff;
+	background: #555;
+	transition: transform .15s ease, opacity .15s ease;
+}
+.sokal-social svg {
+	display: block;
+}
+.themesbazar_footer_sec .sokal-social:hover,
+.themesbazar_footer_sec .sokal-social:focus {
+	color: #fff;
+	opacity: .88;
+	transform: translateY(-2px);
+	text-decoration: none;
+}
+.sokal-social:focus-visible,
+.sokal-app:focus-visible,
+.scrollToTop:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 2px;
+}
+.sokal-social--facebook  { background: #1877F2; }
+.sokal-social--x         { background: #000; box-shadow: 0 0 0 1px rgba(255, 255, 255, .25); }
+.sokal-social--whatsapp  { background: #25D366; }
+.sokal-social--youtube   { background: #FF0000; }
+.sokal-social--instagram {
+	background: #E4405F;
+	background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+.sokal-social--telegram  { background: #26A5E4; }
+
+/* ---- App download badges ---- */
+.sokal-apps {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	gap: 10px;
+}
+.sokal-app {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	min-width: 150px;
+	padding: 6px 14px 6px 10px;
+	border: 1px solid rgba(255, 255, 255, .35);
+	border-radius: 8px;
+	background: #000;
+	color: #fff;
+	line-height: 1.15;
+	text-align: left;
+	transition: opacity .15s ease;
+}
+.themesbazar_footer_sec .sokal-app:hover,
+.themesbazar_footer_sec .sokal-app:focus {
+	color: #fff;
+	opacity: .85;
+	text-decoration: none;
+}
+.sokal-app__logo {
+	flex: 0 0 auto;
+	display: block;
+}
+.sokal-app__text {
+	display: flex;
+	flex-direction: column;
+}
+.sokal-app__text small {
+	font-size: 11px;
+	opacity: .85;
+}
+.sokal-app__text b {
+	font-size: 17px;
+	font-weight: 700;
+	letter-spacing: .2px;
+}
+
+/* ---- Scroll to top (behaviour in js/main.js) ---- */
+.scrollToTop {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+	z-index: 50;
+}
+.scrollToTop:hover,
+.scrollToTop:focus {
+	color: #fff;
+}
+.sokal-top-icon {
+	display: block;
+}
+
+/* ---- Small screens: stack and centre ---- */
+@media (max-width: 767px) {
+	.themesbazar_footer_sec .sokal-footer-info,
+	.themesbazar_footer_sec .sokal-footer-links {
+		text-align: center;
+	}
+	.sokal-footer-follow {
+		margin-top: 10px;
+	}
+	.sokal-social-list,
+	.sokal-apps {
+		justify-content: center;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.sokal-social,
+	.sokal-app {
+		transition: none;
+	}
+	.themesbazar_footer_sec .sokal-social:hover,
+	.themesbazar_footer_sec .sokal-social:focus {
+		transform: none;
+	}
+}
+
+/* ==================================================================
+   Centred footer (v2.0.3): categories • logo • contact • follow • ©
+   Light by default; Theme Settings footer colours and dark mode
+   (html[data-mode] rules in mode.css) override these.
+   ================================================================== */
+.themesbazar_footer_sec.sokal-footer2 {
+	background: #fff;
+	color: #222;
+	padding: 28px 15px 18px;
+	margin-top: 20px;
+	text-align: center;
+	border-top: 1px solid #e5e5e5;
+}
+.sokal-f {
+	max-width: 680px;
+	margin: 0 auto;
+	font-size: 17px;
+	line-height: 1.8;
+}
+.sokal-footer2 a { color: inherit; text-decoration: none; }
+.sokal-footer2 a:hover, .sokal-footer2 a:focus { text-decoration: underline; }
+
+/* Category links separated by bullets */
+.sokal-f-cats ul { list-style: none; margin: 0; padding: 0; }
+.sokal-f-cats li {
+	display: inline-block;
+	font-size: 19px;
+	line-height: 2.4;
+}
+.sokal-f-cats li:not(:last-child)::after {
+	content: "•";
+	margin: 0 12px 0 14px;
+}
+
+.sokal-f-rule {
+	border: 0;
+	border-top: 1px solid #cfcfcf;
+	margin: 18px 0 22px;
+}
+
+.sokal-footer2 .sokal-footer-logo { margin: 0 0 16px; }
+.sokal-footer2 .sokal-footer-logo img { height: var(--sokal-flogo, 90px); /* Theme Settings → General → Footer logo height */ width: auto; max-width: 100%; object-fit: contain; display: inline-block; }
+.sokal-footer2 .sokal-footer-logo--text a { font-size: 24px; font-weight: bold; }
+
+.sokal-f-info p { margin: 0 0 14px; }
+.sokal-f-info .sokal-footer-text { margin-bottom: 4px; }
+.sokal-f-info .sokal-footer-name { font-size: 19px; }
+
+.sokal-f-follow { margin-top: 8px; }
+.sokal-footer2 .sokal-footer-heading { font-size: 19px; margin: 0 0 10px; }
+.sokal-footer2 .sokal-social-list { justify-content: center; }
+.sokal-footer2 .sokal-apps { justify-content: center; margin-top: 12px; }
+
+.sokal-f-copy { margin: 0; font-size: 16px; }
+.sokal-f-credit { margin: 4px 0 0; font-size: 13px; opacity: .75; }
+
+@media (max-width: 767px) {
+	.sokal-f { font-size: 16px; }
+	.sokal-f-cats li { font-size: 17px; }
+	.sokal-f-cats li:not(:last-child)::after { margin: 0 8px 0 10px; }
+}
+
+/* Desktop: full width, categories on one line like the reference. */
+@media (min-width: 992px) {
+	.sokal-f { max-width: none; }
+	.sokal-f-info p { margin-bottom: 18px; }
+}

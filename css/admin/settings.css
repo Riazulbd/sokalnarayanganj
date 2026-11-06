@@ -1,0 +1,24 @@
+/* Theme Settings screen (admin only). Owner: settings agent. */
+.sokal-settings .nav-tab-wrapper { margin-bottom: 16px; }
+.sokal-settings .sokal-group { background: #fff; border: 1px solid #dcdcde; border-radius: 4px; padding: 4px 20px 8px; margin: 0 0 20px; max-width: 1100px; }
+.sokal-settings .sokal-group h2 { margin: 16px 0 4px; }
+.sokal-settings .sokal-group-legacy { background: #fbfbfc; }
+.sokal-settings .sokal-key { font-size: 11px; color: #646970; background: none; padding: 0; }
+.sokal-settings .form-table th { width: 240px; }
+.sokal-image-preview img { display: block; max-width: 240px; max-height: 120px; margin-top: 8px; border: 1px solid #dcdcde; background: #f6f7f7; }
+.sokal-slots { margin: 0 0 0 20px; }
+.sokal-slots li { margin-bottom: 6px; }
+.sokal-typo { display: flex; flex-wrap: wrap; gap: 12px 18px; align-items: flex-start; }
+.sokal-typo label { display: flex; flex-direction: column; gap: 4px; }
+.sokal-typo label span { font-size: 12px; color: #50575e; }
+.sokal-sorter { margin: 0; }
+.sokal-sorter li { display: flex; gap: 16px; align-items: center; }
+.sokal-box { background: #fff; border: 1px solid #dcdcde; border-radius: 4px; padding: 4px 20px 16px; margin: 0 0 20px; max-width: 1100px; }
+.sokal-status th { width: 240px; font-weight: 600; }
+.sokal-clear-cache { margin-top: 16px; }
+.sokal-cf ol { margin-left: 20px; }
+.sokal-cf li { margin-bottom: 10px; line-height: 1.6; }
+.sokal-cf ul { list-style: disc; margin: 6px 0 0 20px; }
+.sokal-share-preview { background: #fff; border: 1px solid #dcdcde; border-radius: 4px; padding: 4px 20px 16px; margin: 0 0 20px; max-width: 1100px; }
+.sokal-share-preview canvas { display: block; width: 100%; max-width: 600px; height: auto; border: 1px solid #dcdcde; background: #f0f0f1; }
+.sokal-share-preview .notice { margin: 12px 0 0; }
